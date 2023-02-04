@@ -1,0 +1,37 @@
+{% extends 'AppCoder/padre.html'%}  
+{% load static %}
+{% block contenidoQueCambia %}
+
+<!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+<h1>Bievenido a MercadoFibre</h1>
+<h2>¿Quienes somos?</h2>
+
+<p>Somos una nueva y ORIGINAl pagina de compra y venta de productos</p>
+
+<h3>
+    Buscar Pedidos
+
+    <form action="/AppCoder/buscar/" method="GET">
+        <input type="number" name="IDdePedido" id="IDdePedido">
+        <input type="submit" value="Buscar" />
+      </form>
+
+          
+
+    {% if pedidos %}
+
+    <p>Estamos buscando el: {{IDdePedido}}</p>
+
+    <ul>
+	{% for pedido in pedidos %}
+		<li> {{pedido.IDdePedido}} </li>
+		<li> {{pedido.fecha}} </li>
+    <li> {{pedido.entregado}} </li>
+	{% endfor %}
+
+    </ul>
+
+    {% endif %} 
+
+{% endblock %}
+
